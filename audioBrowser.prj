@@ -1,0 +1,175 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration build-checksum="940236549" file="C:\Itzik\Labeling tool\audioBrowser.prj" location="C:\Itzik\Labeling tool" name="audioBrowser" preferred-package-location="C:\Itzik\Labeling tool\audioBrowser\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>audioBrowser</param.appname>
+    <param.icon />
+    <param.icons />
+    <param.version>1.0</param.version>
+    <param.authnamewatermark>Yizhaq Goussha</param.authnamewatermark>
+    <param.email>gutzcha@gmail.com</param.email>
+    <param.company>university of Haifa</param.company>
+    <param.summary>Manual and autumatic labeling of duel audio clips</param.summary>
+    <param.description />
+    <param.screenshot>${PROJECT_ROOT}\icons\image.jpg</param.screenshot>
+    <param.guid />
+    <param.installpath.string>\audioBrowser\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
+    <param.logo />
+    <param.install.notes />
+    <param.target.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\audioBrowser\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\audioBrowser\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\audioBrowser\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\audioBrowser</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	  -? 
+	 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 input arguments</param.help.text>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.version />
+      <param.description />
+      <param.guid />
+      <param.installpath.combo />
+      <param.logo />
+      <param.install.notes />
+      <param.target.install.notes />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.logdir />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.support.packages />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.web.mcr.name />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.create.log />
+      <param.log.file />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\audioBrowser.mlapp</file>
+    </fileset.main>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\autodetection\best_net_04102020_smaller.mat</file>
+      <file>${PROJECT_ROOT}\autodetection\best_net_27092020.mat</file>
+      <file>${PROJECT_ROOT}\autodetection\define_a_filter.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\extrac_features_in_batches.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\extract_features_from_large_filesWraper.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\extractFeatures.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\feature_matrix_to_images.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\getFilteredMap.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\prepare_file_for_model.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\randomaize_scale.m</file>
+      <file>${PROJECT_ROOT}\autodetection\tab_to_box.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\visualization_helper.mlx</file>
+      <file>${PROJECT_ROOT}\autodetection\weightedClassificationLayer.m</file>
+      <file>${PROJECT_ROOT}\browsing\drawSpectrogram.m</file>
+      <file>${PROJECT_ROOT}\exporting\prepareTabForDeepPheno.m</file>
+      <file>${PROJECT_ROOT}\loading\getRecodringDetails.m</file>
+      <file>${PROJECT_ROOT}\selection\getRoi.m</file>
+    </fileset.resources>
+    <fileset.package />
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\audioClip.m</file>
+      <file>${PROJECT_ROOT}\editRoisApp.mlapp</file>
+      <file>${PROJECT_ROOT}\icons\backwardarrow.png</file>
+      <file>${PROJECT_ROOT}\icons\forwardarrow.png</file>
+      <file>${PROJECT_ROOT}\icons\tiny-arrow-left-double.png</file>
+      <file>${PROJECT_ROOT}\icons\tiny-arrow-right-double.png</file>
+      <file>C:\Itzik\Project- Building USV classification model\All data\create_table_from_logical_array.mlx</file>
+      <file>C:\Itzik\Project- Building USV classification model\All data\create_table_from_logical_array_only_table.mlx</file>
+      <file>C:\Itzik\Project- Building USV classification model\All data\get_labels2.mlx</file>
+      <file>C:\Itzik\Project- Building USV classification model\All data\get_time_stamps.mlx</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\scripts for processing raw data\splitting and saving\spectro.m</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\summary\behavior\single_mouse.m</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\summary\vocalisaion analysis\Calls.m</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\summary\vocalisaion analysis\Calls_raw.m</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\summary\vocalisaion analysis\Calls_super.m</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\summary\vocalisaion analysis\one_session.m</file>
+      <file>C:\Itzik\Project- Building USV classification model\scripts\summary\vocalisaion analysis\strain_sum.m</file>
+    </fileset.depfun>
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}\audioBrowser\for_testing" name="readme.txt" optional="true">C:\Itzik\Labeling tool\audioBrowser\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\audioBrowser\for_testing" name="splash.png" optional="false">C:\Itzik\Labeling tool\audioBrowser\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\audioBrowser\for_testing" name="audioBrowser.exe" optional="false">C:\Itzik\Labeling tool\audioBrowser\for_testing\audioBrowser.exe</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2020a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
