@@ -55,7 +55,7 @@ classdef audioClip < handle
         allROIs
         path
         times
-        
+        name
     end
     
     methods
@@ -271,6 +271,29 @@ Outputs:
             end
             
         end
+        function objName = get.name(obj)
+            thisName = obj.info.fileName;
+            if isempty(thisName)
+                objName = '';
+                return
+            end
+            [~,objName,~] = fileparts(thisName);
+        end
+        function saveExcle(obj,namestring)
+            fileName = obj.name;
+            if nargin>1
+            if ~isempty(namestring)
+                if namestring(1)=='+'
+                    fileName = [fileName,namestring(2:end)];
+                elseif namestring(1)=='-'
+                    fileName = namestring(2:end);
+                else
+                    fileName = [filename,namestring];
+                end
+            end
+            end
+            writetable(obj.roiTable,[fileName,'.xlsx'])
+        end
         function tab = roi2table(obj,roilist)
             
             if ~exist('roilist','var')||isempty(roilist)
@@ -414,8 +437,11 @@ Outputs:
             end
             audioBrowser(obj,audioClip);
         end
-        
-        function [newVecOut, newFsOut] = playSegment(obj,fromFs,toFs,volume,speed,timeRange,vecIn)
+        function reloadAudioVec(obj)
+            
+            
+        end
+        function [newVecOut, newFsOut, vecSegment] = playSegment(obj,fromFs,toFs,volume,speed,timeRange,vecIn)
            % playSegment(obj,fromFs,toFs,volume,speed,timeRange)
            
             if ~exist('fromFs','var')||isempty(fromFs)
@@ -484,7 +510,16 @@ Outputs:
                T2 = obj2.roiTable;
                obj1.addedTypeList = obj2.addedTypeList;
                obj1.addRowsToTable(T2);
+           else 
+               warning ("The objects you are attempting to merg do not have the same file path")
            end
+        end
+        function changeAudioFile(obj)
+            [file,newvec,newinfo] = obj.loadAudioFile();
+            if file
+               obj.vec= newvec;
+               obj.info = newinfo;
+            end
         end
         function s = saveobj(this)
             s.info          = this.info         ;
@@ -514,6 +549,32 @@ Outputs:
         end
     end
     methods(Static)
+        function [file,vec,info] = loadAudioFile()
+            
+            [file,path] = uigetfile(...
+                {'*.mat;*.wav','All Files (*.mat,*.wav)';...
+                '*.wav','Audio File (.*wav)';...
+                '*.mat','MATLAB File (*.mat)'});
+            if file==0
+                warning('No file was chocen, returning an empty audioClip file')
+                return
+            else
+                [~,f,type]=fileparts(file);
+                switch type
+                    case '.wav'
+                        vec = audioread(fullfile(path,file)) ;
+                    case '.mat'
+                        readfile = matfile(fullfile(path,file));
+                        classesInVar = whos(readfile);
+                        indDouble = find(strcmpi('double',{classesInVar.class}),1,'first');
+                        vec  = eval(['readfile.',classesInVar(indDouble).name]);
+                end
+                info = getRecodringDetails(file,path,f);
+            end
+        end
+        
+        
+        
         function this = loadobj(S,flags)
             if ~exist('flags','var')
                 flags = true;
@@ -598,33 +659,17 @@ Outputs:
                         % Handle response
                         switch answer
                             case 'Load Manualy'
-                                [file,path] = uigetfile(...
-                                    {'*.mat;*.wav','All Files (*.mat,*.wav)';...
-                                    '*.wav','Audio File (.*wav)';...
-                                    '*.mat','MATLAB File (*.mat)'});
-                                
+                                [file,vec,info] = loadAudioFile();
                                 if file==0
-                                    warning('No file was chocen, returning an empty audioClip file')
                                     this = audioClip;
-                                    return
+                                    return;
                                 else
-                                    [~,f,type]=fileparts(file);
-                                    switch type
-                                        case '.wav'
-                                            vec = audioread(fullfile(path,file)) ;
-                                        case '.mat'
-                                            readfile = matfile(fullfile(path,file));
-                                            classesInVar = whos(readfile);
-                                            indDouble = find(strcmpi('double',{classesInVar.class}),1,'first');
-                                            vec  = eval(['readfile.',classesInVar(indDouble).name]);
-                                    end
-                                    
-                                    info = getRecodringDetails(file,path,f);
                                     S.info = info;
                                     S.vec = vec;
                                     this = audioClip(S);
                                     return
                                 end
+                                
                                 
                             case 'Load only roiTable'
                                 this = S.roiTable;
